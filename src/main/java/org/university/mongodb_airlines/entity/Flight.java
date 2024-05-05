@@ -6,8 +6,8 @@ import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -28,8 +28,8 @@ public class Flight {
     private Airport departurePoint;
     @DocumentReference(collection = "Airports")
     private Airport destination;
-    private Date departureDate;
-    private Time departureTime;
-    private Date arrivalDate;
-    private Time arrivalTime;
+    private LocalDate departureDate;
+    private LocalTime departureTime;
+    private LocalDate arrivalDate;
+    private LocalTime arrivalTime;
 }

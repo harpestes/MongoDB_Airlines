@@ -13,9 +13,9 @@ public class AirportService {
 
     private final AirportRepository airportRepository;
 
-    private Airport createAirport(Airport airport) {
+    public Airport createAirport(Airport airport) {
         if(!airportRepository.existsByName(airport.getName())) {
-            airportRepository.save(airport);
+            return airportRepository.save(airport);
         }
         throw new IllegalArgumentException("Airport already exists");
     }
