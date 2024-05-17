@@ -30,10 +30,10 @@ public class ClientService {
     }
 
     public Client updateClient(Client client) {
-        if (clientRepository.existsByFullName(client.getFullName())) {
-            return clientRepository.save(client);
+        if (!clientRepository.existsById(client.getId())) {
+            throw new IllegalArgumentException("Client not exists");
         }
-        throw new IllegalArgumentException("Client not exists");
+        return clientRepository.save(client);
     }
 
     public void deleteClient(String id) {

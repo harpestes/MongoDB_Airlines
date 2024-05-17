@@ -30,10 +30,10 @@ public class AirlineService {
     }
 
     public Airline updateAirline(Airline airline) {
-        if (airlineRepository.existsById(airline.getId())) {
-            airlineRepository.save(airline);
+        if (!airlineRepository.existsById(airline.getId())) {
+            throw new IllegalArgumentException(String.format("Airline with id %s not found", airline.getId()));
         }
-        throw new IllegalArgumentException("Airline not found");
+        return airlineRepository.save(airline);
     }
 
     public void deleteAirline(String id) {
